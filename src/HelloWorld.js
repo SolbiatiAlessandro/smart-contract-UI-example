@@ -6,9 +6,9 @@ import {
   updateMessage,
   loadCurrentMessage,
   getCurrentWalletConnected,
+	contractAddress
 } from "./util/interact.js";
 
-import alchemylogo from "./alchemylogo.svg";
 
 const HelloWorld = () => {
   //state variables
@@ -57,7 +57,10 @@ const HelloWorld = () => {
   //the UI of our component
   return (
     <div id="container">
-      <img id="logo" src={alchemylogo}></img>
+		  <h2>What is this?</h2>
+			<p>This is a UI to edit the smart contract {contractAddress} </p>
+		  <p>Click on "connect wallet" to link your metamask (your ethereum account with which you sign transaction and you pay gas fees). The UI will call the smart contracts methods for you, for instance <i>HelloWorldContract.update(message)</i> using the web3.js APIs</p>
+		<a href="https://ropsten.etherscan.io/address/0xE77328ee4B34f3cd7FaF39dD5dEc3537869e0BB9#code">View smart contract on etherscan at https://ropsten.etherscan.io/address/0xE77328ee4B34f3cd7FaF39dD5dEc3537869e0BB9#code</a>
       <button id="walletButton" onClick={connectWalletPressed}>
         {walletAddress.length > 0 ? (
           "Connected: " +
@@ -69,7 +72,7 @@ const HelloWorld = () => {
         )}
       </button>
 
-      <h2 style={{ paddingTop: "50px" }}>Current Message:</h2>
+      <h2 style={{ paddingTop: "50px" }}>Content of <i>string public message</i> on the smart contract:</h2>
       <p>{message}</p>
 
       <h2 style={{ paddingTop: "18px" }}>New Message:</h2>
@@ -84,7 +87,7 @@ const HelloWorld = () => {
         <p id="status">{status}</p>
 
         <button id="publish" onClick={onUpdatePressed}>
-          Update
+          Call <i>function update(string memory newMessage)</i> on the smart contract
         </button>
       </div>
     </div>
