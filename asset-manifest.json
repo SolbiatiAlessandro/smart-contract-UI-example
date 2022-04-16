@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/SolbiatiAlessandro/smart-contract-UI-example/static/css/main.0a8e090a.chunk.css",
+    "main.js": "/SolbiatiAlessandro/smart-contract-UI-example/static/js/main.b8a701e9.chunk.js",
+    "main.js.map": "/SolbiatiAlessandro/smart-contract-UI-example/static/js/main.b8a701e9.chunk.js.map",
+    "runtime-main.js": "/SolbiatiAlessandro/smart-contract-UI-example/static/js/runtime-main.90651c31.js",
+    "runtime-main.js.map": "/SolbiatiAlessandro/smart-contract-UI-example/static/js/runtime-main.90651c31.js.map",
+    "static/js/2.459922e2.chunk.js": "/SolbiatiAlessandro/smart-contract-UI-example/static/js/2.459922e2.chunk.js",
+    "static/js/2.459922e2.chunk.js.map": "/SolbiatiAlessandro/smart-contract-UI-example/static/js/2.459922e2.chunk.js.map",
+    "static/js/3.fdb1e597.chunk.js": "/SolbiatiAlessandro/smart-contract-UI-example/static/js/3.fdb1e597.chunk.js",
+    "static/js/3.fdb1e597.chunk.js.map": "/SolbiatiAlessandro/smart-contract-UI-example/static/js/3.fdb1e597.chunk.js.map",
+    "index.html": "/SolbiatiAlessandro/smart-contract-UI-example/index.html",
+    "static/css/main.0a8e090a.chunk.css.map": "/SolbiatiAlessandro/smart-contract-UI-example/static/css/main.0a8e090a.chunk.css.map",
+    "static/js/2.459922e2.chunk.js.LICENSE.txt": "/SolbiatiAlessandro/smart-contract-UI-example/static/js/2.459922e2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.90651c31.js",
+    "static/js/2.459922e2.chunk.js",
+    "static/css/main.0a8e090a.chunk.css",
+    "static/js/main.b8a701e9.chunk.js"
+  ]
+}
