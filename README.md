@@ -1,4 +1,5 @@
-# 🗃 Hello World Part 4 Tutorial Starter Files
+This is an example of a simple UI (React) to interact with a smart contract (Ethereum testnet).
 
-This project contains the starter files for [Hello World Part 4 tutorial](https://docs.alchemy.com/alchemy/tutorials/hello-world-smart-contract/creating-a-full-stack-dapp), in which we teach you how to create a full stack dApp by connecting your Hello World smart contract to a React frontend using Metamask and Web3 tools.
-
+Try it live at  <https://solbiatialessandro.github.io/smart-contract-UI-example/>
+ 
+This is the smart contract that is running the UI <https://ropsten.etherscan.io/address/0xE77328ee4B34f3cd7FaF39dD5dEc3537869e0BB9#code>
