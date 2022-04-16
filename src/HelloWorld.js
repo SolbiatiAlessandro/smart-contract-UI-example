@@ -40,8 +40,11 @@ const HelloWorld = () => {
     
   }
 
-  const connectWalletPressed = async () => { //TODO: implement
-    
+  const connectWalletPressed = async () => { 
+		const connectWalletResponse = await connectWallet();
+		console.log(connectWalletResponse);
+		setStatus(connectWalletResponse.status);
+		setWallet(connectWalletResponse.address);
   };
 
   const onUpdatePressed = async () => { //TODO: implement
