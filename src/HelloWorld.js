@@ -21,10 +21,19 @@ const HelloWorld = () => {
   useEffect(async () => {
 		const message = await loadCurrentMessage();
 		setMessage(message);
+		addSmartContractListener();
   }, []);
 
-  function addSmartContractListener() { //TODO: implement
-    
+  function addSmartContractListener() { 
+		helloWorldContract.events.UpdatedMessages({}, (error, data) => {
+			if (error) {
+				setStatus(error.message);
+			} else {
+				setMessage(data.returnValues[1]);
+				setNewMessage("");
+				setStatus("Message was updated");
+			}
+		});
   }
 
   function addWalletListener() { //TODO: implement

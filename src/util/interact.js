@@ -6,7 +6,7 @@ const web3 = createAlchemyWeb3(alchemyKey);
 
 
 const contractABI = require("../contract-abi.json");
-const contractAddress = process.env.CONTRACT_ADDRESS;
+const contractAddress = "0xE77328ee4B34f3cd7FaF39dD5dEc3537869e0BB9"
 export const helloWorldContract = new web3.eth.Contract(
 	contractABI,
 	contractAddress
