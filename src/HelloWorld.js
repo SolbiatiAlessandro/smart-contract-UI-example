@@ -26,6 +26,8 @@ const HelloWorld = () => {
 		const { address, status } = await getCurrentWalletConnected();
 		setWallet(address);
 		setStatus(status);
+
+    addWalletListener();
   }, []);
 
   function addSmartContractListener() { 
@@ -40,7 +42,30 @@ const HelloWorld = () => {
 		});
   }
 
-	// TODO: not handling user logout or changing account (addWalletListener)
+  function addWalletListener() {
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", (accounts) => {
+        if (accounts.length > 0) {
+          setWallet(accounts[0]);
+          setStatus("👆🏽 Write a message in the text-field above.");
+        } else {
+          setWallet("");
+          setStatus("🦊 Connect to Metamask using the top right button.");
+        }
+      });
+    } else {
+      setStatus(
+        <p>
+          {" "}
+          🦊{" "}
+          <a target="_blank" href={`https://metamask.io/download.html`}>
+            You must install Metamask, a virtual Ethereum wallet, in your
+            browser.
+          </a>
+        </p>
+      );
+    }
+  }
 
   const connectWalletPressed = async () => { 
 		const connectWalletResponse = await connectWallet();
@@ -62,7 +87,7 @@ const HelloWorld = () => {
 		  <p>Click on "connect wallet" to link your metamask (your ethereum account with which you sign transaction and you pay gas fees). The UI will call the smart contracts methods for you, for instance <i>HelloWorldContract.update(message)</i> using the web3.js APIs</p>
 		<a href="https://ropsten.etherscan.io/address/0xE77328ee4B34f3cd7FaF39dD5dEc3537869e0BB9#code">View smart contract on etherscan at https://ropsten.etherscan.io/address/0xE77328ee4B34f3cd7FaF39dD5dEc3537869e0BB9#code</a>
       <button id="walletButton" onClick={connectWalletPressed}>
-        {walletAddress.length > 0 ? (
+        {walletAddress && walletAddress.length > 0 ? (
           "Connected: " +
           String(walletAddress).substring(0, 6) +
           "..." +
