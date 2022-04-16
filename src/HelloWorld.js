@@ -22,6 +22,10 @@ const HelloWorld = () => {
 		const message = await loadCurrentMessage();
 		setMessage(message);
 		addSmartContractListener();
+
+		const { address, status } = await getCurrentWalletConnected();
+		setWallet(address);
+		setStatus(status);
   }, []);
 
   function addSmartContractListener() { 
@@ -36,9 +40,7 @@ const HelloWorld = () => {
 		});
   }
 
-  function addWalletListener() { //TODO: implement
-    
-  }
+	// TODO: not handling user logout or changing account (addWalletListener)
 
   const connectWalletPressed = async () => { 
 		const connectWalletResponse = await connectWallet();
@@ -47,8 +49,9 @@ const HelloWorld = () => {
 		setWallet(connectWalletResponse.address);
   };
 
-  const onUpdatePressed = async () => { //TODO: implement
-    
+  const onUpdatePressed = async () => { 
+		const updateMessageResponse = await updateMessage(walletAddress, newMessage);
+		setStatus(updateMessageResponse.status);
   };
 
   //the UI of our component

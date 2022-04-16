@@ -41,13 +41,73 @@ export const connectWallet = async () => {
 				address: ""
 		}
 	}
-  
 };
 
 export const getCurrentWalletConnected = async () => {
+	if (window.ethereum){
+		try{
+			const addressArray = await window.ethereum.request({
+				method: "eth_accounts"
+			});
+			const obj = {
+				status: "write message in text-field",
+				address: addressArray[0],
+			}
+			return obj;
+		} catch(err) {
+			const obj = {
+				status: err.message,
+				address: ""
+			}
+		}
+	} else {
+		return {
+				status: "metamask not connected",
+				address: ""
+		}
+	}
   
 };
 
 export const updateMessage = async (address, message) => {
+	if (!window.ethereum || address === null) {
+			return {
+      status:
+        "💡 Connect your MetaMask wallet to update the message on the blockchain.",
+    }
+  }
+	if (message.trim() === "") {
+    return {
+      status: "❌ Your message cannot be an empty string.",
+    }
+  }
+
+	const transactionParameters = {
+		to: contractAddress,
+		from: address,
+		data: helloWorldContract.methods.update(message).encodeABI()
+	}
+
+	try{
+		const txHash = await window.ethereum.request({
+			method: "eth_sendTransaction", 
+			params: [transactionParameters]
+		});
+		return {
+			status: (
+      <span>
+        ✅{" "}
+        <a target="_blank" href={`https://ropsten.etherscan.io/tx/${txHash}`}>
+          {`https://ropsten.etherscan.io/tx/${txHash}`}
+        </a>
+        <br />
+        <p>Waiting for transaction to be mined</p>
+      </span>
+    ),
+		}
+
+  } catch (err) {
+		return { status: err.message };
+	}
   
 };
